@@ -9,6 +9,35 @@
     margin: 20px;
 }
 
+#form-add-book {
+    display:flex;
+    place-content: flex-start;
+    flex-direction: column;
+
+    width: 250px;
+    padding: 10px;
+
+    border: 1px solid rgb(141, 141, 141);
+    box-shadow: 2px 2px 2px 2px rgb(194, 194, 194, 0.4);
+    border-radius: 5px;
+}
+
+#add-new-book {
+    width: 100px;
+    padding: 3px;
+}
+
+.form-input-item,
+label,
+#add-new-book {
+    margin-top: 6px;
+}
+
+/* #form-inputs {
+    display: grid;
+    grid-template: repeat(4,200px) / 200px   
+} */
+
 .container-book {
     background-color: #fff;
 
@@ -23,6 +52,7 @@
 
     border: 5px solid rgb(78, 81, 248);
     border-right: 1px solid rgb(141, 141, 141);
+    box-shadow: 2px 2px 2px 2px rgb(194, 194, 194, 0.4);
 }
 
 .container-book > * {
@@ -40,3 +70,4 @@
     width: 100px;
     align-self: center;
 }
+

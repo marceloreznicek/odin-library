@@ -1,3 +1,4 @@
+// SETUP
 const myLibrary = []
 
 function Book(title, author, page, isRead) {
@@ -9,6 +10,49 @@ function Book(title, author, page, isRead) {
 
 function addBooktoLibrary(title, author, page, isRead) {
     myLibrary.push(new Book(title, author, page, isRead))
+}
+
+function createBookElement(book) {
+    let eleBookContainer = document.createElement("div")
+    eleBookContainer.classList.add("container-book")
+
+    objDictFieldName.forEach(element => {
+        let eleBookElement = document.createElement("div")
+        eleBookElement.classList.add(element.class)
+        eleBookElement.textContent = book[element.key]
+        if (element.prefix !== undefined) {
+            eleBookElement.textContent = element.prefix + book[element.key]}
+        eleBookContainer.appendChild(eleBookElement)
+    })
+
+    let eleBookDelete = document.createElement("button")
+    eleBookDelete.classList.add("book-delete")
+    eleBookDelete.textContent = "Delete"
+    eleBookDelete.addEventListener("click", (e) => deleteBook(e.target))
+
+    eleBookContainer.appendChild(eleBookDelete)
+
+    divLibrary.appendChild(eleBookContainer)
+}
+
+
+function createNewBook() {
+    let newBook = new Book(
+        document.querySelector("#title").value,
+        document.querySelector("#author").value,
+        document.querySelector("#pagecount").value,
+        document.querySelector("#isRead").checked
+    ) 
+
+    createBookElement(newBook)
+
+    // console.log(document.querySelector("#title").value)
+}
+
+function deleteBook(targetElement) {
+    targetElement.parentElement.remove()
+
+    // console.log(document.querySelector("#title").value)
 }
 
 addBooktoLibrary("The Hobbit", "J.R.R. Tolkien", 10, true);
@@ -31,20 +75,22 @@ myLibrary.forEach(book => console.log(book.info()))
 
 const divLibrary = document.querySelector("#library")
 
-myLibrary.forEach(book => {
+const objDictFieldName = [
+    {key: "title", class: "book-name"},
+    {key: "author", class: "book-author"},
+    {key: "page", class: "book-page-count", prefix: "Pages: "},
+    {key: "isRead", class: "book-is-read", prefix: "Read: "},
+]
 
-    let eleTR = document.createElement("tr")
-    book.forEach(element =>  {
-        let eleTD = document.createElement("td")
-        td.textContent = element
-        eleTR.appendChild(td)
-    })
 
-    divLibrary.appendChild(eleTR)
+while (divLibrary.firstChild) {divLibrary.removeChild(divLibrary.firstChild)}
 
-    let eleBook = document.createElement("p")
-    eleBook.textContent = book.info()
-    divLibrary.appendChild(eleBook)
-})
+myLibrary.forEach(book => {createBookElement(book)})
 
+// Main
+document.querySelector("#add-new-book").addEventListener("click", createNewBook)
+const initialDeleteButtons = document.querySelectorAll(".book-delete")
+
+initialDeleteButtons.forEach((button) =>
+    button.addEventListener("click", (e) => deleteBook(e.target)))
 
