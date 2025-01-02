@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#form-add-book,
+#header {
+    margin: 20px;
+}
+
+.container-book {
+    background-color: #fff;
+
+    width: 300px;
+    border-radius: 10px;
+
+    padding: 5px;
+    margin: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 5px solid rgb(78, 81, 248);
+    border-right: 1px solid rgb(141, 141, 141);
+}
+
+.container-book > * {
+    padding: 2px;
+
+}
+
+#library {
+    background-color: #d6d6d6;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.book-delete {
+    width: 100px;
+    align-self: center;
+}
